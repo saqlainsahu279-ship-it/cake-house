@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cake House | Happiness Baked Every Day</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--pink:#c92868;--pink2:#f9eaf1;--blush:#fff7fb;--ink:#29212a;--muted:#817681;--line:#f0e5eb;--white:#fff;--shadow:0 12px 35px #7d315010}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#fff;color:var(--ink);font-family:"DM Sans",sans-serif}button,input,select{font:inherit}button,a{cursor:pointer}a{text-decoration:none;color:inherit}
+.topbar{background:#29212a;color:#fff;text-align:center;padding:9px;font-size:11px;letter-spacing:.3px}
+.nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:0 max(5vw,24px);border-bottom:1px solid var(--line);position:sticky;top:0;background:#ffffffed;backdrop-filter:blur(12px);z-index:10}
+.logo{font-family:"Playfair Display";font-size:25px;font-weight:800;color:var(--pink);white-space:nowrap}.logo span{color:#332632}
+.navlinks{display:flex;gap:26px;font-size:12px;font-weight:600}
+.navlinks a:hover{color:var(--pink)}
+.navtools{display:flex;align-items:center;gap:15px}
+.iconbtn{border:0;background:none;font-size:20px;position:relative;color:#3c303b}
+.count{position:absolute;top:-5px;right:-8px;background:var(--pink);color:white;border-radius:50%;font-size:10px;width:17px;height:17px;display:grid;place-items:center}
+.hero{background:linear-gradient(110deg,#fff8fc 0%,#fcecf4 100%);min-height:430px;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:48px 8%;overflow:hidden}
+.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:2px;color:var(--pink);font-weight:700}
+.hero h1{font:800 clamp(36px,4.5vw,60px)/1.12 "Playfair Display";margin:15px 0}
+.hero h1 em{color:var(--pink);font-style:normal}
+.hero p{color:var(--muted);font-size:13px;line-height:1.9;max-width:430px}
+.actions{display:flex;gap:12px;margin:24px 0}
+.btn{border:1px solid var(--pink);background:var(--pink);color:white;padding:12px 21px;border-radius:7px;font-size:12px;font-weight:700;transition:.2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 18px #c9286830}
+.btn.outline{background:transparent;color:var(--pink)}
+.perks{display:flex;gap:20px;font-size:10px;color:#6d5c68}
+.heroimg{position:relative;text-align:center}
+.heroimg img{width:min(100%,490px);aspect-ratio:1.15;object-fit:contain;filter:drop-shadow(0 18px 18px #b66a8a20)}
+.bubble{position:absolute;bottom:10%;left:5%;background:white;padding:12px 16px;border-radius:12px;box-shadow:var(--shadow);font-size:11px}
+.bubble b{color:var(--pink);display:block;font-size:14px}
+.section{padding:68px 7%}
+.section.soft{background:var(--blush)}
+.sectionhead{text-align:center;margin:0 auto 32px}
+.sectionhead h2{font:700 31px "Playfair Display";margin:9px 0}
+.sectionhead p{font-size:12px;color:var(--muted);margin:0}
+.categories{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+.cat{background:white;border:1px solid #f4e8ef;border-radius:13px;padding:18px 10px;text-align:center;transition:.2s}
+.cat:hover{transform:translateY(-5px);border-color:#e9b4ce}
+.cat img{width:100%;height:92px;object-fit:contain}
+.cat b{display:block;font-size:12px;margin:8px 0 4px}
+.cat small{color:var(--muted);font-size:10px}
+.products{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.product{border:1px solid var(--line);border-radius:13px;overflow:hidden;background:#fff;position:relative;transition:.2s}
+.product:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
+.product .pic{background:#fff6fa;position:relative;padding:12px}
+.product img{width:100%;height:190px;object-fit:contain}
+.tag{position:absolute;top:12px;left:12px;background:var(--pink);color:white;border-radius:4px;padding:5px 8px;font-size:9px}
+.heart{position:absolute;top:10px;right:10px;background:white;border:0;border-radius:50%;width:30px;height:30px;color:#bd7795}
+.details{padding:14px}
+.details h3{font-size:13px;margin:0 0 8px}
+.stars{color:#f5ad36;font-size:11px}
+.price{font-weight:700;color:var(--pink);font-size:14px;margin:8px 0}
+.price del{color:#a99ca6;font-size:11px;font-weight:400;margin-left:6px}
+.details .btn{width:100%;padding:10px}
+.banner{background:#f9e9f1;border-radius:20px;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:35px 7%;overflow:hidden}
+.banner h2{font:700 34px "Playfair Display";margin:12px 0}
+.banner h2 strong{color:var(--pink)}
+.banner img{width:100%;height:240px;object-fit:contain}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);background:var(--pink);color:white;text-align:center;padding:25px}
+.stats strong{font:700 27px "Playfair Display";display:block}
+.stats small{font-size:10px;opacity:.85}
+.builder{display:grid;grid-template-columns:1fr 1fr;gap:45px;align-items:center;max-width:950px;margin:auto}
+.builder img{width:100%;max-height:340px;object-fit:contain}
+.builderbox{background:#fff;border:1px solid var(--line);border-radius:15px;padding:24px;box-shadow:var(--shadow)}.field{margin:14px 0}
+.field label{display:block;font-size:11px;font-weight:700;margin-bottom:7px}
+.field select,
+.field input{width:100%;padding:11px;border:1px solid var(--line);border-radius:7px;background:#fff;font-size:12px}
+.choices{display:flex;gap:8px}
+.choice{border:1px solid var(--line);border-radius:7px;padding:8px 11px;background:#fff;font-size:11px}
+.choice.active{border-color:var(--pink);color:var(--pink);background:var(--pink2)}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.gallery img{width:100%;height:220px;object-fit:cover;border-radius:12px}
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.review{background:white;border:1px solid var(--line);border-radius:12px;padding:22px}
+.review p{font-size:12px;line-height:1.8;color:var(--muted)}
+.review b{font-size:12px}
+.artists{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.artist{border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.artist img{width:100%;height:220px;object-fit:cover}
+.artist div{padding:14px}
+.artist b{font-size:13px}
+.artist small{display:block;color:var(--muted);font-size:11px;margin-top:5px}
+.newsletter{background:var(--pink);color:white;padding:38px 7%;display:flex;justify-content:space-between;align-items:center;gap:24px}
+.newsletter h2{font:700 26px "Playfair Display";margin:0 0 7px}
+.newsletter p{font-size:11px;opacity:.85}
+.newsform{display:flex;max-width:430px;width:100%}
+.newsform input{min-width:0;flex:1;padding:13px;border:0;border-radius:7px 0 0 7px}
+.newsform button{border:0;background:#332632;color:white;padding:0 18px;border-radius:0 7px 7px 0;font-size:11px}
+.footer{background:#29212a;color:#fff;padding:45px 7% 22px}
+.footgrid{display:grid;grid-template-columns:2fr 1fr 1fr 1.3fr;gap:30px}
+.footer p,.footer a{font-size:11px;color:#c9bdc8;line-height:1.9}.footer h4{font-size:12px}
+.copyright{border-top:1px solid #4a3d49;margin-top:30px;padding-top:18px;color:#b5a7b3;font-size:10px;display:flex;justify-content:space-between}
+.overlay{position:fixed;inset:0;background:#1d111b65;z-index:30;display:none}
+.overlay.show{display:block}
+.cart{position:fixed;right:-420px;top:0;height:100%;width:min(390px,95vw);background:white;z-index:31;padding:24px;transition:.3s;display:flex;flex-direction:column}
+.cart.open{right:0}
+.carthead{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding-bottom:15px}
+.carthead h3{font:700 22px "Playfair Display"}
+.cartitems{overflow:auto;flex:1}
+.cartitem{display:flex;gap:12px;padding:15px 0;border-bottom:1px solid var(--line)}
+.cartitem img{width:70px;height:70px;object-fit:contain;background:var(--blush);border-radius:8px}
+.cartitem b{font-size:12px}
+.cartitem small{display:block;color:var(--pink);margin:6px 0}
+.qty{display:flex;gap:8px;align-items:center}
+.qty button{border:1px solid var(--line);background:white;border-radius:4px}
+.cartfoot{border-top:1px solid var(--line);padding-top:16px}
+.total{display:flex;justify-content:space-between;font-weight:700;margin-bottom:14px}
+.empty{text-align:center;color:var(--muted);padding:40px 0;font-size:13px}
+.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:#29212a;color:white;padding:12px 20px;border-radius:8px;font-size:12px;z-index:50;opacity:0;pointer-events:none;transition:.25s}
+.toast.show{opacity:1}
+.mobilemenu{display:none}
+@media(max-width:900px){.navlinks{gap:13px}.hero{padding:35px 5%}.categories{grid-template-columns:repeat(3,1fr)}.products{grid-template-columns:repeat(2,1fr)}.footgrid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.nav{height:65px;padding:0 18px}.navlinks{display:none}.mobilemenu{display:block}.logo{font-size:22px}.hero{grid-template-columns:1fr;text-align:center;padding:38px 7%}.hero p{margin:auto}.actions,.perks{justify-content:center;flex-wrap:wrap}.heroimg img{max-height:260px}.section{padding:48px 5%}.sectionhead h2{font-size:27px}.categories{grid-template-columns:repeat(2,1fr);gap:10px}.cat img{height:75px}.products{gap:12px}.product img{height:140px}.details{padding:11px}.banner{grid-template-columns:1fr;text-align:center;padding:28px 6%}.banner img{height:180px}.stats{grid-template-columns:repeat(2,1fr);gap:20px}.builder{grid-template-columns:1fr;gap:18px}.builder img{max-height:220px}.gallery{grid-template-columns:repeat(2,1fr)}.gallery img{height:150px}.reviews,.artists{grid-template-columns:1fr}.artist img{height:260px}.newsletter{display:block;text-align:center}.newsform{margin:18px auto 0}.footgrid{grid-template-columns:1fr 1fr;gap:15px}.copyright{display:block;line-height:2}.navtools{gap:9px}}
+</style>
+
+<style id="premium-receipt-style">#receiptModal>div{padding:0!important;border-radius:22px!important;overflow:hidden!important;border:1px solid #f0dce7!important;box-shadow:0 28px 90px #40203430!important}#receiptBody .customer-receipt{font-family:'DM Sans',sans-serif;color:#302431}#receiptBody .receipt-hero{background:#302431;color:#fff;padding:28px 28px 24px;position:relative}#receiptBody .receipt-hero:after{content:'♡';position:absolute;right:20px;top:5px;font-size:70px;color:#ffffff16}#receiptBody .receipt-hero h2{font:700 31px 'Playfair Display';margin:0;color:white}#receiptBody .receipt-hero h2 span{color:#f6b8d2}#receiptBody .receipt-hero p{font-size:10px;letter-spacing:1px;color:#ead9e4;margin:8px 0 0}#receiptBody .receipt-strip{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;background:#fff7fb;padding:16px 25px;font-size:10px;border-bottom:1px dashed #e8d5e1}#receiptBody .receipt-strip b{color:#c92868}#receiptBody .receipt-inner{padding:8px 25px 20px}#receiptBody .receipt-line{display:flex;justify-content:space-between;gap:12px;padding:13px 0;border-bottom:1px solid #f3e8ef;font-size:12px}#receiptBody .receipt-line small{display:block;color:#8c7e89;margin-top:4px}#receiptBody .receipt-grand{background:#fff7fb;padding:20px 25px;display:flex;align-items:center;justify-content:space-between;font-weight:800}#receiptBody .receipt-grand strong{font:700 25px 'Playfair Display';color:#c92868}#receiptBody .receipt-footer{text-align:center;padding:20px;color:#8c7e89;font-size:11px;line-height:1.8}#receiptModal .receipt-buttons{display:flex;gap:9px;flex-wrap:wrap;padding:0 25px 25px}#receiptModal .receipt-buttons .btn{border-radius:9px}@media print{body>*:not(#receiptModal){display:none!important}#receiptModal{display:block!important;position:static!important;background:white!important;padding:0!important}#receiptModal>div{width:100%!important;max-width:720px!important;max-height:none!important;box-shadow:none!important;border:1px solid #ddd!important}#receiptBody .receipt-hero,#receiptBody .receipt-grand,#receiptBody .receipt-strip{print-color-adjust:exact;-webkit-print-color-adjust:exact}#receiptModal .receipt-buttons{display:none!important}}</style>
+</head>
+<body>
+<header class="nav">
+<a class="logo" href="#home">♡ Cake <span>House</span></a>
+<nav class="navlinks"><a href="#home">Home</a><a href="#categories">Shop</a><a href="#products">Cakes</a><a href="#builder">Custom Cakes</a><a href="#gallery">Gallery</a><a href="#contact">Contact</a></nav>
+<div class="navtools"><button class="iconbtn" aria-label="Search products" onclick="openSearch()">⌕</button><button class="iconbtn" aria-label="Wishlist" onclick="showWishlist()">♡</button><button class="iconbtn" aria-label="Cart" onclick="toggleCart(true)">♧<span class="count" id="cartCount">0</span></button><button class="iconbtn mobilemenu" onclick="document.getElementById('categories').scrollIntoView()">☰</button></div>
+</header>
+<main>
+<!-- Fixed marketing imagery is authored directly in HTML img tags. Product imagery is catalog data in the HTML JSON block / admin catalog. -->
+<section class="hero" id="home"><div><div class="eyebrow">Made with love, baked with joy</div><h1>Happiness <em>Baked</em><br>Every Day</h1><p>Discover delightful cakes, handcrafted desserts, and sweet little moments made extra special. Your celebration deserves a Cake House creation.</p><div class="actions"><a class="btn" href="#products">Shop Cakes →</a><a class="btn outline" href="#builder">Create Your Cake</a></div><div class="perks"><span>♡ Freshly baked</span><span>✦ Premium ingredients</span><span>♧ Made with love</span></div></div>
+<div class="heroimg"><img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=900&q=85" alt="Chocolate celebration cake"><div class="bubble"><b>100% Fresh</b>Every single day</div></div></section>
+<section class="section soft" id="categories"><div class="sectionhead"><div class="eyebrow">Explore our collection</div><h2>Delicious Cake Categories</h2><p>A little sweetness for every kind of celebration</p></div><div class="categories">
+<div class="cat" onclick="filterProducts('cakes')"><img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=300&q=80"><b>Cakes</b><small>Celebration favorites</small></div>
+<div class="cat" onclick="filterProducts('cupcakes')"><img src="https://images.unsplash.com/photo-1486427944299-d1955d23e34d?auto=format&fit=crop&w=300&q=80"><b>Cupcakes</b><small>Little sweet treats</small></div>
+<div class="cat" onclick="filterProducts('breads')"><img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=300&q=80"><b>Breads</b><small>Fresh daily</small></div>
+<div class="cat" onclick="filterProducts('pastries')"><img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=300&q=80"><b>Pastries</b><small>Flaky & buttery</small></div>
+<div class="cat" onclick="filterProducts('cookies')"><img src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=300&q=80"><b>Cookies</b><small>Oven fresh</small></div>
+<div class="cat" onclick="filterProducts('savory')"><img src="https://images.unsplash.com/photo-1608198093002-ad4e005484e1?auto=format&fit=crop&w=300&q=80"><b>Savory</b><small>For every craving</small></div>
+</div></section>
+<section class="section" id="products"><div class="sectionhead"><div class="eyebrow">Baked just for you</div><h2>Featured Products</h2><p>Our customers' favorite sweet creations</p></div><div class="products" id="productGrid"></div></section>
+<section class="section soft"><div class="banner"><div><div class="eyebrow">A little extra sweetness</div><h2>Sweet Moments With<br><strong>30% OFF</strong></h2><p>Make every celebration memorable with a Cake House favorite.</p><a class="btn" href="#products">Shop the offer →</a></div><img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=700&q=85" alt="Pink berry cake"></div></section>
+<div class="stats"><div><strong>232+</strong><small>Happy Customers</small></div><div><strong>162+</strong><small>Delicious Cakes</small></div><div><strong>9+</strong><small>Expert Bakers</small></div><div><strong>100+</strong><small>Sweet Memories</small></div></div>
+<section class="section" id="builder"><div class="sectionhead"><div class="eyebrow">Make it yours</div><h2>Create Your Custom Cake</h2><p>Bring your sweetest ideas to life</p></div><div class="builder"><img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=700&q=85" alt="Custom chocolate cake"><div class="builderbox"><div class="field"><label>Cake flavor</label><select id="flavor"><option>Vanilla Delight</option><option>Chocolate Fudge</option><option>Red Velvet</option><option>Strawberry Cream</option></select></div><div class="field"><label>Cake size</label><div class="choices"><button class="choice active" data-size="1" onclick="chooseSize(this)">1 pound</button><button class="choice" data-size="2" onclick="chooseSize(this)">2 pounds</button><button class="choice" data-size="3" onclick="chooseSize(this)">3 pounds</button></div></div><div class="field"><label>Decoration</label><select id="decoration"><option>Fresh flowers</option><option>Chocolate drizzle</option><option>Fresh berries</option><option>Minimal elegant</option></select></div><div class="field"><label>Personal message</label><input id="message" placeholder="Happy Birthday..."></div><div class="total"><span>Your Cake Price</span><span id="customPrice">Rs. 2,499</span></div><button class="btn" style="width:100%" onclick="addCustom()">Add custom cake to cart ♡</button></div></div></section>
+<section class="section soft" id="gallery"><div class="sectionhead"><div class="eyebrow">Made for memorable moments</div><h2>Our Beautiful Creations</h2><p>Every cake tells a sweet story</p></div><div class="gallery">
+<img src="https://images.unsplash.com/photo-1607958996333-41aef7caefaa?auto=format&fit=crop&w=600&q=80" alt="Decorated cake">
+<img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80" alt="Chocolate cake">
+<img src="https://images.unsplash.com/photo-1535141192574-5d4897c12636?auto=format&fit=crop&w=600&q=80" alt="Celebration cake">
+<img src="https://images.unsplash.com/photo-1586985289688-ca3cf47d3e6e?auto=format&fit=crop&w=600&q=80" alt="Wedding cake">
+<img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?auto=format&fit=crop&w=600&q=80" alt="Berry cake">
+<img src="https://images.unsplash.com/photo-1486427944299-d1955d23e34d?auto=format&fit=crop&w=600&q=80" alt="Cupcakes"></div></section>
+<section class="section"><div class="sectionhead"><div class="eyebrow">A little love from our customers</div><h2>What Our Customers Say</h2></div><div class="reviews"><div class="review"><div class="stars">★★★★★</div><p>“Beautifully made and absolutely delicious. The cake was the highlight of our celebration!”</p><b>— Ayesha K.</b></div><div class="review"><div class="stars">★★★★★</div><p>“The custom design came out exactly how I imagined. Fresh, soft, and so lovely.”</p><b>— Sarah M.</b></div><div class="review"><div class="stars">★★★★★</div><p>“Wonderful service and the sweetest flavors. I will definitely order again.”</p><b>— Hina R.</b></div></div></section>
+<section class="section soft"><div class="sectionhead"><div class="eyebrow">The hands behind the magic</div><h2>Expert Cake Artists</h2><p>Passionate bakers, creating with heart</p></div><div class="artists"><div class="artist"><img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=500&q=80"><div><b>Chef Zuhaib</b><small>Pastry Chef</small></div></div><div class="artist"><img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=500&q=80"><div><b>Chef Maryam</b><small>Cake Designer</small></div></div><div class="artist"><img src="https://images.unsplash.com/photo-1581299894007-aaa50297cf16?auto=format&fit=crop&w=500&q=80"><div><b>Chef Amjad</b><small>Decorating Artist</small></div></div></div></section>
+<section class="newsletter"><div><h2>Subscribe for Sweet Updates</h2><p>Get fresh offers, new flavors, and little surprises in your inbox.</p></div><form class="newsform" onsubmit="event.preventDefault();toast('Thanks for subscribing to Cake House!')"><input type="email" required placeholder="Enter your email address"><button>Subscribe</button></form></section>
+</main>
+
+<footer class="footer" id="contact"><div class="footgrid"><div><a class="logo" href="#home">♡ Cake <span style="color:white">House</span></a><p>Happiness baked every day. Fresh cakes, thoughtful details, and sweetness for every occasion.</p></div><div><h4>Quick Links</h4><p><a href="#home">Home</a><br><a href="#products">Shop Cakes</a><br><a href="#builder">Custom Cakes</a><br><a href="#gallery">Our Gallery</a></p></div><div><h4>Customer Care</h4><p>FAQs<br>Delivery & Returns<br>Privacy Policy<br>Terms & Conditions</p></div><div><h4>Get in Touch</h4><p>✉ hello@cakehouse.com<br>☎ +92 300 1234567<br>⌖ Lahore, Pakistan</p></div></div><div class="copyright"><span>© 2026 Cake House. Made with ♡</span><span>Freshly baked • Always delightful</span></div></footer>
+<div class="overlay" id="overlay" onclick="toggleCart(false)"></div><aside class="cart" id="cart"><div class="carthead"><h3>Your Shopping Cart</h3><button class="iconbtn" onclick="toggleCart(false)">×</button></div><div class="cartitems" id="cartItems"></div><div class="cartfoot"><div class="total"><span>Subtotal</span><span id="subtotal">Rs. 0</span></div><button class="btn" style="width:100%" onclick="checkout()">Proceed to Checkout →</button></div></aside><div class="modal" id="checkoutModal" style="position:fixed;inset:0;background:#291b2866;z-index:60;display:none;align-items:center;justify-content:center;padding:15px"><div style="background:white;border-radius:14px;padding:24px;width:min(480px,100%);max-height:90vh;overflow:auto"><h2 style="font:700 24px 'Playfair Display'">Delivery details</h2><form onsubmit="placeOrder(event)"><label style="display:block;font-size:12px;margin:12px 0 5px">Full name</label><input id="custName" required style="width:100%;padding:11px;border:1px solid #f0e5eb;border-radius:7px"><label style="display:block;font-size:12px;margin:12px 0 5px">Phone number</label><input id="custPhone" required style="width:100%;padding:11px;border:1px solid #f0e5eb;border-radius:7px"><label style="display:block;font-size:12px;margin:12px 0 5px">Delivery address</label><textarea id="custAddress" required style="width:100%;padding:11px;border:1px solid #f0e5eb;border-radius:7px"></textarea><p id="checkoutTotal" style="font-weight:bold">Total is shown in your cart.</p><button class="btn" type="submit">Place Order & Get Receipt</button><button class="btn outline" type="button" onclick="closeModal('checkoutModal')">Cancel</button></form></div></div>
+<div class="modal" id="receiptModal" style="position:fixed;inset:0;background:#291b2866;z-index:61;display:none;align-items:center;justify-content:center;padding:15px"><div style="background:white;border-radius:14px;padding:25px;width:min(500px,100%);max-height:90vh;overflow:auto"><div id="receiptBody"></div><div class="receipt-buttons"><button class="btn" onclick="printReceipt()">Print / Save as PDF</button><button class="btn outline" onclick="closeModal('receiptModal')">Continue browsing</button></div></div></div>
+<style>.modal.show{display:flex!important}@media print{body>*:not(#receiptModal){display:none!important}#receiptModal{display:block!important;position:static!important;background:white!important}#receiptModal>div{box-shadow:none!important;max-height:none!important}}</style>
+<div class="toast" id="toast"></div>
+<script type="application/json" id="cakehouse-default-catalog">
+[
+  {
+    "id": 2,
+    "name": "Chocolate Fudge Cake",
+    "cat": "cakes",
+    "price": 2999,
+    "old": 3449,
+    "rating": "★★★★★",
+    "img": "https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=600&q=80",
+    "tag": "Popular",
+    "description": "Freshly prepared by Cake House bakers.",
+    "flavors": [
+      "Classic"
+    ],
+    "discount": 0,
+    "stock": 20
+  },
+  {
+    "id": 3,
+    "name": "Vanilla Birthday Cake",
+    "cat": "cakes",
+    "price": 2499,
+    "old": 2874,
+    "rating": "★★★★★",
+    "img": "https://images.unsplash.com/photo-1486427944299-d1955d23e34d?auto=format&fit=crop&w=600&q=80",
+    "tag": "Fresh",
+    "description": "Freshly prepared by Cake House bakers.",
+    "flavors": [
+      "Classic"
+    ],
+    "discount": 0,
+    "stock": 20
+  },
+  {
+    "id": 4,
+    "name": "Red Velvet Cake",
+    "cat": "cakes",
+    "price": 3299,
+    "old": 3794,
+    "rating": "★★★★★",
+    "img": "https://images.unsplash.com/photo-1551024506-0f7f3c6d5b0d?auto=format&fit=crop&w=600&q=80",
+    "tag": "Favorite",
+    "description": "Freshly prepared by Cake House bakers.",
+    "flavors": [
+      "Classic"
+    ],
+    "discount": 0,
+    "stock": 20
+  },
+  {
+    "id": 5,
+    "name": "Royal Wedding Cake",
+    "cat": "cakes",
+    "price": 9999,
+    "old": 11499,
+    "rating": "★★★★☆",
+    "img": "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80",
+    "tag": "Premium",
+    "description": "Freshly prepared by Cake House bakers.",
+    "flavors": [
+      "Classic"
+    ],
+    "discount": 0,
+    "stock": 20
+  },
+  {
+    "id": 6,
+    "name": "Black Forest Cake",
+    "cat": "cakes",
+    "price": 3199,
+    "old": 3679,
+    "rating": "★★★★★",
+    "img": "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=600&q=80",
+    "tag": "Classic",
+    "description": "Freshly prepared by Cake House bakers.",
+    "flavors": [
+      "Classic"
+    ],
+    "discount": 0,
+    "stock": 20
+  },
+  {
+    "id": 7,
+    "name": "Carrot Walnut Cake",
+    "cat": "cakes",
+    "price": 2799,
+    "old": 3219,
+    "rating": "★★★★★",
+    "img": "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=600&q=80",
+    "tag": "House pick",
+    "description": "Freshly prepared by Cake House bakers.",
+    "flavors": [
+      "Classic"
+    ],
+    "discount": 0,
+    "stock": 20
+  },
+  {
+    "id": 8,
+    "name": "Lemon Drizzle Cake",
+    "cat": "cakes",
+    "price": 2299,
+    "old": 2644,
+    "rating": "★★★★★",
+    "img": "https://images.unsplash.com/photo-1607958996333-41aef7caefaa?auto=format&fit=crop&w=600&q=80",
+    "tag": "Zesty",
+    "description": "Freshly prepared by Cake House bakers.",
+    "flavors": [
+      "Classic"
+    ],
+    "discount": 0,
+    "stock": 20
+  },
+  {
+    "id": 9,
+    "name": "Custom Photo Cake",
+    "cat": "custom-cakes",
+    "price": 4499,
+    "old": 5174,
+    "rating": "★★★★☆",
+    "img": "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80",
+    "tag": "Personalized",
+    "description": "Freshly prepared by Cake House bakers.",
+    "flavors": [
+      "Classic"
+    ],
+    "discount": 0,
+    "stock": 20
+  },
+  {
+    "id": 10,
+    "name": "Cupcake Box (6 pcs)",
+    "cat": "cupcakes",
+    "price": 1599,
+    "old": 1839,
+    "rating": "★★★★★",
+    "img": "https://images.unsplash.com/photo-1608198093002-ad4e005484e1?auto=format&fit=crop&w=600&q=80",
+    "tag": "Box of 6",
+    "description": "Freshly prepared by Cake House bakers.",
+    "flavors": [
+      "Classic"
+    ],
+    "discount": 0,
+    "stock": 20
+  },
+  {
+    "id": 11,
+    "name": "Chocolate Cupcakes",
+    "cat": "cupcakes",
+    "price": 1799,
+    "old": 2069,
+    "rating": "★★★★★",
+    "img": "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?auto=format&fit=crop&w=600&q=80",
+    "tag": "Rich",
+    "description": "Freshly prepared by Cake House bakers.",
+    "flavors": [
+      "Classic"
+    ],
+    "discount": 0,
+    "stock": 20
+  },
+  {
+    "id": 12,
+    "name": "Vanilla Buttercream Cupcakes",
+    "cat": "cupcakes",
+    "price": 1699,
+    "old": 1954,
+    "rating": "★★★★★",
+    "img": "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80",
+    "tag": "Sweet",
+    "description": "Freshly prepared by Cake House bakers.",
+    "flavors": [
+      "Classic"
+    ],
+    "discount": 0,
+    "stock": 20
+  },
+  {
+    "id": 13,
+    "name": "Mini Donuts (8 pcs)",
+    "cat": "donuts",
+    "price": 1299,
+    "old": 1494,
+    "rating": "★★★★☆",
+    "img": "https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=600&q=80",
+    "tag": "Mini treats",
+    "description": "Freshly prepared by Cake House bakers.",
+    "flavors": [
+      "Classic"
+    ],
+    "discount": 0,
+    "stock": 20
+  },
+  {
+    "id": 14,
+    "name": "Chocolate Glazed Donut",
+    "cat": "donuts",
+    "price": 299,
+    "old": 344,
+    "rating": "★★★★★",
+    "img": "https://images.unsplash.com/photo-1486427944299-d1955d23e34d?auto=format&fit=crop&w=600&q=80",
+    "tag": "Classic",
+    "description": "Freshly prepared by Cake House bakers.",
+    "flavors": [
+      "Classic"
+    ],
+    "discount": 0,
+    "stock": 20
+  },
+  {
+    "id": 15,
+    "name": "Cinnamon Sugar Donut",
+    "cat": "donuts",
+    "price": 279,
+    "old": 321,
+    "rating": "★★★★★",
+    "img": "https://images.unsplash.com/photo-1551024506-0f7f3c6d5b0d?auto=format&fit=crop&w=600&q=80",
+    "tag": "Warm",
+    "description": "Freshly prepared by Cake House bakers.",
+    "flavors": [
+      "Classic"
+    ],
+    "discount": 0,
+    "stock": 20
+  },
+  {
+    "id": 16,
+    "name": "Butter Croissant",
+    "cat": "pastries",
+    "price": 399,
+    "old": 459,
+    "rating": "★★★★★",
+    "img": "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80",
+    "tag": "Flaky",
+    "description": "Freshly prepared by Cake House bakers.",
+    "flavors": [
+      "Classic"
+    ],
+    "discount": 0,
+    "stock": 20
+  },
+  {
+    "id": 17,
+    "name": "Chocolate Croissant",
+    "cat": "pastries",
+    "price": 499,
+    "old": 574,
+    "rating": "★★★★☆",
+    "img": "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=600&q=80",
+    "tag": "Filled",
+    "description": "Freshly prepared by Cake House bakers.",
+    "flavors": [
+      "Classic"
+    ],
+    "discount": 0,
+    "stock": 20
+  },
+  {
+    "id": 18,
+    "name": "Apple Danish",
+    "cat": "pastries",
+    "price": 449,
+    "old": 516,
+    "rating": "★★★★★",
+    "img": "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=600&q=80",
+    "tag": "Fruit",
+    "description": "Freshly prepared by Cake House bakers.",
+    "flavors": [
+      "Classic"
+    ],
+    "discount": 0,
+    "stock": 20
+  },
+  {
+    "id": 19,
+    "name": "Cream Puff (2 pcs)",
+    "cat": "pastries",
+    "price": 599,
+    "old": 689,
+    "rating": "★★★★★",
+    "img": "https://images.unsplash.com/photo-1607958996333-41aef7caefaa?auto=format&fit=crop&w=600&q=80",
+    "tag": "Delicate",
+    "description": "Freshly prepared by Cake House bakers.",
+    "flavors": [
+      "Classic"
+    ],
+    "discount": 0,
+    "stock": 20
+  },
+  {
+    "id": 20,
+    "name": "Chocolate Chip Cookies (6 pcs)",
+    "cat": "cookies",
+    "price": 899,
+    "old": 1034,
+    "rating": "★★★★★",
+    "img": "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80",
+    "tag": "Best seller",
+    "description": "Freshly prepared by Cake House bakers.",
+    "flavors": [
+      "Classic"
+    ],
+    "discount": 0,
+    "stock": 20
+  },
+  {
+    "id": 21,
+    "name": "Oatmeal Raisin Cookies (6 pcs)",
+    "cat": "cookies",
+    "price": 799,
+    "old": 919,
+    "rating": "★★★★☆",
+    "img": "https://images.unsplash.com/photo-1608198093002-ad4e005484e1?auto=format&fit=crop&w=600&q=80",
+    "tag": "Homestyle",
+    "description": "Freshly prepared by Cake House bakers.",
+    "flavors": [
+      "Classic"
+    ],
+    "discount": 0,
+    "stock": 20
+  },
+  {
+    "id": 22,
+    "name": "Double Chocolate Cookies (6 pcs)",
+    "cat": "cookies",
+    "price": 999,
+    "old": 1149,
+    "rating": "★★★★★",
+    "img": "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?auto=format&fit=crop&w=600&q=80",
+    "tag": "Chocolate",
+    "description": "Freshly prepared by Cake House bakers.",
+    "flavors": [
+      "Classic"
+    ],
+    "discount": 0,
+    "stock": 20
+  },
+  {
+    "id": 23,
+    "name": "Fudgy Brownie (4 pcs)",
+    "cat": "brownies",
+    "price": 1199,
+    "old": 1379,
+    "rating": "★★★★★",
+    "img": "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80",
+    "tag": "Fudgy",
+    "description": "Freshly prepared by Cake House bakers.",
+    "flavors": [
+      "Classic"
+    ],
+    "discount": 0,
+    "stock": 20
+  },
+  {
+    "id": 24,
+    "name": "Walnut Brownie",
+    "cat": "brownies",
+    "price": 399,
+    "old": 459,
+    "rating": "★★★★★",
+    "img": "https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=600&q=80",
+    "tag": "Nutty",
+    "description": "Freshly prepared by Cake House bakers.",
+    "flavors": [
+      "Classic"
+    ],
+    "discount": 0,
+    "stock": 20
+  },
+  {
+    "id": 25,
+    "name": "Blueberry Muffin",
+    "cat": "muffins",
+    "price": 399,
+    "old": 459,
+    "rating": "★★★★☆",
+    "img": "https://images.unsplash.com/photo-1486427944299-d1955d23e34d?auto=format&fit=crop&w=600&q=80",
+    "tag": "Fresh baked",
+    "description": "Freshly prepared by Cake House bakers.",
+    "flavors": [
+      "Classic"
+    ],
+    "discount": 0,
+    "stock": 20
+  },
+  {
+    "id": 26,
+    "name": "Banana Chocolate Muffin",
+    "cat": "muffins",
+    "price": 449,
+    "old": 516,
+    "rating": "★★★★★",
+    "img": "https://images.unsplash.com/photo-1551024506-0f7f3c6d5b0d?auto=format&fit=crop&w=600&q=80",
+    "tag": "Moist",
+    "description": "Freshly prepared by Cake House bakers.",
+    "flavors": [
+      "Classic"
+    ],
+    "discount": 0,
+    "stock": 20
+  },
+  {
+    "id": 27,
+    "name": "Sourdough Loaf",
+    "cat": "breads",
+    "price": 999,
+    "old": 1149,
+    "rating": "★★★★★",
+    "img": "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80",
+    "tag": "Artisan",
+    "description": "Freshly prepared by Cake House bakers.",
+    "flavors": [
+      "Classic"
+    ],
+    "discount": 0,
+    "stock": 20
+  },
+  {
+    "id": 28,
+    "name": "Classic White Bread",
+    "cat": "breads",
+    "price": 399,
+    "old": 459,
+    "rating": "★★★★★",
+    "img": "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=600&q=80",
+    "tag": "Daily",
+    "description": "Freshly prepared by Cake House bakers.",
+    "flavors": [
+      "Classic"
+    ],
+    "discount": 0,
+    "stock": 20
+  },
+  {
+    "id": 29,
+    "name": "Whole Wheat Bread",
+    "cat": "breads",
+    "price": 499,
+    "old": 574,
+    "rating": "★★★★☆",
+    "img": "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=600&q=80",
+    "tag": "Wholesome",
+    "description": "Freshly prepared by Cake House bakers.",
+    "flavors": [
+      "Classic"
+    ],
+    "discount": 0,
+    "stock": 20
+  },
+  {
+    "id": 30,
+    "name": "Milk Bread Rolls (6 pcs)",
+    "cat": "breads",
+    "price": 599,
+    "old": 689,
+    "rating": "★★★★★",
+    "img": "https://images.unsplash.com/photo-1607958996333-41aef7caefaa?auto=format&fit=crop&w=600&q=80",
+    "tag": "Soft",
+    "description": "Freshly prepared by Cake House bakers.",
+    "flavors": [
+      "Classic"
+    ],
+    "discount": 0,
+    "stock": 20
+  },
+  {
+    "id": 31,
+    "name": "Garlic Bread",
+    "cat": "savory",
+    "price": 699,
+    "old": 804,
+    "rating": "★★★★★",
+    "img": "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80",
+    "tag": "Savory",
+    "description": "Freshly prepared by Cake House bakers.",
+    "flavors": [
+      "Classic"
+    ],
+    "discount": 0,
+    "stock": 20
+  },
+  {
+    "id": 32,
+    "name": "Cheese Puff (4 pcs)",
+    "cat": "savory",
+    "price": 899,
+    "old": 1034,
+    "rating": "★★★★★",
+    "img": "https://images.unsplash.com/photo-1608198093002-ad4e005484e1?auto=format&fit=crop&w=600&q=80",
+    "tag": "Cheesy",
+    "description": "Freshly prepared by Cake House bakers.",
+    "flavors": [
+      "Classic"
+    ],
+    "discount": 0,
+    "stock": 20
+  },
+  {
+    "id": 33,
+    "name": "Chicken Patty",
+    "cat": "savory",
+    "price": 349,
+    "old": 401,
+    "rating": "★★★★☆",
+    "img": "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?auto=format&fit=crop&w=600&q=80",
+    "tag": "Snack",
+    "description": "Freshly prepared by Cake House bakers.",
+    "flavors": [
+      "Classic"
+    ],
+    "discount": 0,
+    "stock": 20
+  },
+  {
+    "id": 34,
+    "name": "Pizza Slice",
+    "cat": "savory",
+    "price": 499,
+    "old": 574,
+    "rating": "★★★★★",
+    "img": "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80",
+    "tag": "Hot",
+    "description": "Freshly prepared by Cake House bakers.",
+    "flavors": [
+      "Classic"
+    ],
+    "discount": 0,
+    "stock": 20
+  },
+  {
+    "id": 35,
+    "name": "Fruit Tart",
+    "cat": "desserts",
+    "price": 1299,
+    "old": 1494,
+    "rating": "★★★★★",
+    "img": "https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=600&q=80",
+    "tag": "Seasonal",
+    "description": "Freshly prepared by Cake House bakers.",
+    "flavors": [
+      "Classic"
+    ],
+    "discount": 0,
+    "stock": 20
+  },
+  {
+    "id": 36,
+    "name": "Cheesecake Slice",
+    "cat": "desserts",
+    "price": 899,
+    "old": 1034,
+    "rating": "★★★★★",
+    "img": "https://images.unsplash.com/photo-1486427944299-d1955d23e34d?auto=format&fit=crop&w=600&q=80",
+    "tag": "Creamy",
+    "description": "Freshly prepared by Cake House bakers.",
+    "flavors": [
+      "Classic"
+    ],
+    "discount": 0,
+    "stock": 20
+  },
+  {
+    "id": 37,
+    "name": "Tiramisu Cup",
+    "cat": "desserts",
+    "price": 999,
+    "old": 1149,
+    "rating": "★★★★☆",
+    "img": "https://images.unsplash.com/photo-1551024506-0f7f3c6d5b0d?auto=format&fit=crop&w=600&q=80",
+    "tag": "Coffee",
+    "description": "Freshly prepared by Cake House bakers.",
+    "flavors": [
+      "Classic"
+    ],
+    "discount": 0,
+    "stock": 20
+  },
+  {
+    "id": 38,
+    "name": "Eclair",
+    "cat": "desserts",
+    "price": 499,
+    "old": 574,
+    "rating": "★★★★★",
+    "img": "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80",
+    "tag": "French",
+    "description": "Freshly prepared by Cake House bakers.",
+    "flavors": [
+      "Classic"
+    ],
+    "discount": 0,
+    "stock": 20
+  }
+]
+</script>
+
+<!-- Supabase client (free-tier backend; use only project URL + anon/publishable key) -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const SUPABASE_URL='YOUR_SUPABASE_PROJECT_URL';
+const SUPABASE_ANON_KEY='YOUR_SUPABASE_PUBLISHABLE_OR_ANON_KEY';
+const sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY);
+</script>
+<script>
+const defaultProducts=JSON.parse(document.getElementById('cakehouse-default-catalog').textContent);
+function normalizeStoreProduct(p={}){const asList=v=>Array.isArray(v)?v.map(x=>String(x).trim()).filter(Boolean):String(v||'').split(',').map(x=>x.trim()).filter(Boolean);return {...p,id:p.id??('P'+Date.now()),name:String(p.name||'Untitled product'),cat:String(p.cat||p.category||'uncategorized').trim().toLowerCase().replace(/\s+/g,'-'),price:Math.max(0,Number(p.price??p.regularPrice??0)),discount:Math.min(100,Math.max(0,Number(p.discount||0))),stock:Math.max(0,Number(p.stock??20)),sold:Math.max(0,Number(p.sold||0)),flavors:asList(p.flavors).length?asList(p.flavors):['Classic'],sizes:asList(p.sizes),tag:String(p.tag||'Fresh'),description:String(p.description||''),active:p.active!==false,rating:p.rating||'★★★★★'};}
+let products=defaultProducts.map(normalizeStoreProduct);
+async function loadPublicCatalog(){const {data,error}=await sb.from('products').select('*').eq('active',true).order('created_at',{ascending:false});if(error){toast('Could not load online catalog: '+error.message);return}products=(data||[]).map(r=>normalizeStoreProduct({...r,cat:r.category,img:r.image_url,active:r.active}));render()}
+let cartItems=[],size=1,selectedFlavors={};
+const money=n=>'Rs. '+Number(n||0).toLocaleString('en-PK');
+function finalPrice(p){return Math.max(0,Math.round(Number(p.price)*(1-(Number(p.discount||0)/100))))}
+// Category tiles and their images are fixed in the HTML. Keep their markup untouched.
+function renderCategories(){return;}
+
+function render(list=products){
+ const grid=document.getElementById('productGrid');
+ const visible=list.filter(p=>p.active!==false);
+ grid.innerHTML=visible.length?visible.map(p=>{
+  const flavors=Array.isArray(p.flavors)&&p.flavors.length?p.flavors:['Classic'];
+  const sizes=Array.isArray(p.sizes)?p.sizes:[];
+  const price=finalPrice(p),stock=Number(p.stock??20),pid=JSON.stringify(p.id);
+  return `<article class="product"><div class="pic" onclick="showProduct(${pid})" role="button" tabindex="0" aria-label="View ${escapeHtml(p.name)} details"><span class="tag">${p.discount?`${Number(p.discount)}% OFF`:escapeHtml(p.tag||'Fresh')}</span>${p.img?`<img src="${escapeHtml(p.img)}" alt="${escapeHtml(p.name)}" loading="lazy">`:'<span class="product-visual" aria-hidden="true">♡</span>'}</div><div class="details"><h3 onclick="showProduct(${pid})" style="cursor:pointer">${escapeHtml(p.name)}</h3><p style="font-size:11px;color:#817681;line-height:1.5">${escapeHtml(p.description||'Freshly baked with care.')}</p>${sizes.length?`<label style="font-size:10px">Size <select id="size-${escapeHtml(String(p.id))}" style="width:100%;padding:8px;border:1px solid #f0e5eb;border-radius:6px;margin:5px 0">${sizes.map(z=>`<option value="${escapeHtml(z)}">${escapeHtml(z)}</option>`).join('')}</select></label>`:''}${flavors.length>1?`<label style="font-size:10px">Flavour <select id="flavor-${escapeHtml(String(p.id))}" style="width:100%;padding:8px;border:1px solid #f0e5eb;border-radius:6px;margin:5px 0">${flavors.map(f=>`<option value="${escapeHtml(f)}">${escapeHtml(f)}</option>`).join('')}</select></label>`:''}<div class="price">${money(price)} ${p.discount?`<del>${money(p.price)}</del>`:''}</div><small style="display:block;color:#817681;margin:0 0 9px">${stock>0?`${stock} available`:'Currently unavailable'}</small><button class="btn" ${stock<=0?'disabled':''} onclick="addToCart(${pid})">${stock<=0?'Out of Stock':'Add to Cart'}</button></div></article>`;
+ }).join(''):'<div class="empty">No products are currently available in this category.</div>';
+}
+function escapeHtml(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function filterProducts(cat){render(cat==='all'?products:products.filter(p=>p.cat===cat));document.getElementById('products').scrollIntoView({behavior:'smooth'})}
+function addToCart(id){const p=products.find(x=>String(x.id)===String(id));if(!p)return;const flavor=document.getElementById('flavor-'+id)?.value||(p.flavors?.[0]||'Classic');const chosenSize=document.getElementById('size-'+id)?.value||'';let existing=cartItems.find(x=>String(x.id)===String(id)&&x.flavor===flavor&&x.chosenSize===chosenSize);const inCart=cartItems.filter(x=>String(x.id)===String(id)).reduce((n,x)=>n+x.qty,0);if(inCart>=Number(p.stock??20)){toast('Sorry, available stock limit reached');return}if(existing)existing.qty++;else cartItems.push({...p,price:finalPrice(p),qty:1,flavor,chosenSize});updateCart();toast(p.name+' added to your basket')}
+function addCustom(){let flavor=document.getElementById('flavor').value,dec=document.getElementById('decoration').value,msg=document.getElementById('message').value;cartItems.push({id:'custom'+Date.now(),name:'Custom '+flavor,price:2499*size,qty:1,flavor,extra:`${size} pound • ${dec}${msg?' • '+msg:''}`});updateCart();toggleCart(true)}
+function updateCart(){document.getElementById('cartCount').textContent=cartItems.reduce((s,x)=>s+x.qty,0);document.getElementById('cartItems').innerHTML=cartItems.length?cartItems.map((x,i)=>`<div class="cartitem"><div style="flex:1"><b>${escapeHtml(x.name)}</b><small>${money(x.price)} · ${escapeHtml(x.flavor||'')}</small>${x.chosenSize?`<small>Size: ${escapeHtml(x.chosenSize)}</small>`:''}${x.extra?`<small>${escapeHtml(x.extra)}</small>`:''}<div class="qty"><button onclick="changeQty(${i},-1)">−</button>${x.qty}<button onclick="changeQty(${i},1)">+</button><button style="margin-left:auto" onclick="removeItem(${i})">Remove</button></div></div></div>`).join(''):'<div class="empty">Your cart is waiting for something sweet ♡</div>';document.getElementById('subtotal').textContent=money(cartItems.reduce((s,x)=>s+x.price*x.qty,0))}
+function changeQty(i,n){if(cartItems[i]){if(n>0){const item=cartItems[i],p=products.find(x=>String(x.id)===String(item.id));const total=cartItems.filter(x=>String(x.id)===String(item.id)).reduce((a,x)=>a+x.qty,0);if(p&&total>=Number(p.stock??20)){toast('Available stock limit reached');return}}cartItems[i].qty+=n;if(cartItems[i].qty<=0)cartItems.splice(i,1)}updateCart()}
+function removeItem(i){cartItems.splice(i,1);updateCart()}
+function toggleCart(open){document.getElementById('cart').classList.toggle('open',open);document.getElementById('overlay').classList.toggle('show',open)}
+function chooseSize(btn){document.querySelectorAll('.choice').forEach(x=>x.classList.remove('active'));btn.classList.add('active');size=+btn.dataset.size;document.getElementById('customPrice').textContent=money(2499*size)}
+function checkout(){if(!cartItems.length){toast('Your basket is empty');return}document.getElementById('checkoutModal').classList.add('show')}
+async function placeOrder(e){e.preventDefault();const name=document.getElementById('custName').value.trim(),phone=document.getElementById('custPhone').value.trim(),address=document.getElementById('custAddress').value.trim();const payload=cartItems.map(x=>({product_id:String(x.id).startsWith('custom')?null:String(x.id),name:x.name,qty:Number(x.qty),flavor:x.flavor||'',chosenSize:x.chosenSize||'',extra:x.extra||'',custom:String(x.id).startsWith('custom'),custom_price:Number(x.price||0)}));const {data,error}=await sb.rpc('place_cake_order',{p_customer:{name,phone,address},p_items:payload});if(error){toast('Order could not be saved: '+error.message);return}const order=data;cartItems=[];updateCart();toggleCart(false);document.getElementById('checkoutModal').classList.remove('show');const displayItems=order.items||payload.map(x=>({...x,price:x.custom_price}));document.getElementById('receiptBody').innerHTML=`<div class="customer-receipt"><div class="receipt-hero"><h2>♡ Cake <span>House</span></h2><p>HANDCRAFTED WITH LOVE · FRESH FROM OUR OVEN</p></div><div class="receipt-strip"><span>ORDER <b>${escapeHtml(order.order_id)}</b></span><span>${escapeHtml(new Date(order.created_at||Date.now()).toLocaleString())}</span><span>STATUS <b>Received</b></span></div><div class="receipt-inner"><h3 style="font:700 20px 'Playfair Display';margin:17px 0 5px">Your sweet selection</h3><p style="font-size:11px;color:#8c7e89;margin:0 0 12px">Prepared especially for ${escapeHtml(name)}</p>${displayItems.map(x=>`<div class="receipt-line"><div><b>${escapeHtml(x.name)}</b><small>${x.flavor?'Flavour: '+escapeHtml(x.flavor)+' · ':''}${x.chosenSize?'Size: '+escapeHtml(x.chosenSize)+' · ':''}Quantity: ${x.qty}</small></div><b>${money(Number(x.price||0)*Number(x.qty||1))}</b></div>`).join('')}</div><div class="receipt-grand"><span>Order total</span><strong>${money(order.total)}</strong></div><div class="receipt-footer">Thank you for choosing <b style="color:#c92868">Cake House</b>.<br>Your order has been saved securely to our online order database.</div></div>`;document.getElementById('receiptModal').classList.add('show')}
+function closeModal(id){document.getElementById(id).classList.remove('show')}
+function printReceipt(){window.print()}
+let toastTimer;function toast(msg){let el=document.getElementById('toast');el.textContent=msg;el.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove('show'),2500)}
+renderCategories();render();loadPublicCatalog();
+</script>
+
+<!-- Customer portal enhancements: search, product details, favorites and persistent cart -->
+<style>
+.customer-tools{position:fixed;inset:0;background:#2515239c;z-index:70;display:none;align-items:center;justify-content:center;padding:16px}.customer-tools.show{display:flex}.customer-panel{background:#fff;border-radius:18px;width:min(650px,100%);max-height:90vh;overflow:auto;padding:24px;box-shadow:0 25px 80px #24132440}.customer-panel h2{font:700 25px 'Playfair Display';margin:0 0 14px}.customer-panel input,.customer-panel select{width:100%;padding:12px;border:1px solid var(--line);border-radius:8px;margin:7px 0 12px}.detail-layout{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}.detail-layout{grid-template-columns:1fr}.detail-layout h3{font:700 24px 'Playfair Display';margin:5px 0}.detail-layout p{color:var(--muted);font-size:13px;line-height:1.8}.wish-btn{border:1px solid var(--line);background:white;border-radius:8px;padding:10px;margin-top:8px}.product .pic{cursor:pointer}.product .product-visual{display:grid;place-items:center;width:100%;height:190px;font-size:64px;color:var(--pink);background:var(--blush)}.product:hover .product-visual{transform:scale(1.035)}.stock-note{font-size:11px;color:var(--muted)}.search-results{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.search-result{border:1px solid var(--line);padding:10px;border-radius:9px;display:flex;gap:10px;align-items:center;cursor:pointer}.search-result b{font-size:12px}.search-result small{display:block;color:var(--pink);margin-top:4px}@media(max-width:600px){.detail-layout{grid-template-columns:1fr}.customer-panel{padding:18px}.search-results{grid-template-columns:1fr}}
+</style>
+<div class="customer-tools" id="searchModal" onclick="if(event.target===this)closeCustomerTool('searchModal')"><div class="customer-panel"><div style="display:flex;justify-content:space-between;align-items:center"><h2>Find something sweet</h2><button class="iconbtn" onclick="closeCustomerTool('searchModal')">×</button></div><input id="storeSearch" type="search" placeholder="Search cakes, flavors, pastries…" oninput="searchProducts(this.value)" autofocus><div class="search-results" id="searchResults"></div></div></div>
+<div class="customer-tools" id="productModal" onclick="if(event.target===this)closeCustomerTool('productModal')"><div class="customer-panel"><div style="display:flex;justify-content:space-between;align-items:center"><span class="eyebrow">A closer look</span><button class="iconbtn" onclick="closeCustomerTool('productModal')">×</button></div><div id="productDetail"></div></div></div>
+<div class="customer-tools" id="wishlistModal" onclick="if(event.target===this)closeCustomerTool('wishlistModal')"><div class="customer-panel"><div style="display:flex;justify-content:space-between;align-items:center"><h2>Your favorites ♡</h2><button class="iconbtn" onclick="closeCustomerTool('wishlistModal')">×</button></div><div class="search-results" id="wishlistItems"></div></div></div>
+<script id="customer-portal-upgrades">
+const wishIds=new Set(JSON.parse(localStorage.getItem('cakehouse_wishlist')||'[]').map(String));
+function openSearch(){document.getElementById('searchModal').classList.add('show');document.getElementById('storeSearch').focus();searchProducts('')}
+function closeCustomerTool(id){document.getElementById(id).classList.remove('show')}
+function searchProducts(q){const term=String(q||'').trim().toLowerCase();const matches=products.filter(p=>p.active!==false&&(!term||[p.name,p.cat,p.description,...(p.flavors||[])].join(' ').toLowerCase().includes(term))).slice(0,30);document.getElementById('searchResults').innerHTML=matches.length?matches.map(p=>`<div class="search-result" onclick="showProduct(${JSON.stringify(p.id)})">${p.img?`<img src="${escapeHtml(p.img)}" alt="" style="width:48px;height:48px;object-fit:cover;border-radius:6px">`:''}<div><b>${escapeHtml(p.name)}</b><small>${money(finalPrice(p))}</small></div></div>`).join(''):'<p class="stock-note">No matching products found. Try another search.</p>'}
+function showProduct(id){const p=products.find(x=>String(x.id)===String(id));if(!p)return;const flavors=p.flavors?.length?p.flavors:['Classic'];const sizes=p.sizes||[];document.getElementById('productDetail').innerHTML=`<div class="detail-layout"><div><h3>${escapeHtml(p.name)}</h3><div class="stars">${escapeHtml(p.rating||'★★★★★')}</div><div class="price">${money(finalPrice(p))} ${p.discount?`<del>${money(p.price)}</del>`:''}</div><p>${escapeHtml(p.description||'Freshly baked with care by Cake House.')}</p><p class="stock-note">${Number(p.stock||0)>0?`${p.stock} available`:'Currently unavailable'}</p>${sizes.length?`<label>Choose size<select id="detailSize">${sizes.map(z=>`<option>${escapeHtml(z)}</option>`).join('')}</select></label>`:''}${flavors.length>1?`<label>Choose flavor<select id="detailFlavor">${flavors.map(z=>`<option>${escapeHtml(z)}</option>`).join('')}</select></label>`:''}<button class="btn" style="width:100%;margin-top:8px" ${Number(p.stock||0)<=0?'disabled':''} onclick="addDetailToCart(${JSON.stringify(p.id)})">Add to Cart</button><button class="wish-btn" onclick="toggleWish(${JSON.stringify(p.id)})">${wishIds.has(String(p.id))?'♥ Saved to favorites':'♡ Save to favorites'}</button></div></div>`;closeCustomerTool('searchModal');closeCustomerTool('wishlistModal');document.getElementById('productModal').classList.add('show')}
+function addDetailToCart(id){const p=products.find(x=>String(x.id)===String(id));if(!p)return;const flavor=document.getElementById('detailFlavor')?.value||(p.flavors?.[0]||'Classic');const chosenSize=document.getElementById('detailSize')?.value||'';const current=cartItems.filter(x=>String(x.id)===String(id)).reduce((n,x)=>n+x.qty,0);if(current>=Number(p.stock??0)){toast('Sorry, stock limit reached');return}let found=cartItems.find(x=>String(x.id)===String(id)&&x.flavor===flavor&&x.chosenSize===chosenSize);if(found)found.qty++;else cartItems.push({...p,price:finalPrice(p),qty:1,flavor,chosenSize});updateCart();saveCart();closeCustomerTool('productModal');toast('Added to your cart ♡')}
+function toggleWish(id){const key=String(id);wishIds.has(key)?wishIds.delete(key):wishIds.add(key);localStorage.setItem('cakehouse_wishlist',JSON.stringify([...wishIds]));showProduct(id);toast(wishIds.has(key)?'Saved to favorites ♡':'Removed from favorites')}
+function showWishlist(){const list=products.filter(p=>wishIds.has(String(p.id))&&p.active!==false);document.getElementById('wishlistItems').innerHTML=list.length?list.map(p=>`<div class="search-result" onclick="showProduct(${JSON.stringify(p.id)})">${p.img?`<img src="${escapeHtml(p.img)}" alt="" style="width:48px;height:48px;object-fit:cover;border-radius:6px">`:''}<div><b>${escapeHtml(p.name)}</b><small>${money(finalPrice(p))}</small></div></div>`).join(''):'<p class="stock-note">Your favorites list is empty. Tap ♡ on a product to save it.</p>';document.getElementById('wishlistModal').classList.add('show')}
+function saveCart(){localStorage.setItem('cakehouse_public_cart',JSON.stringify(cartItems))}
+const savedCart=JSON.parse(localStorage.getItem('cakehouse_public_cart')||'[]');if(Array.isArray(savedCart))cartItems=savedCart.filter(x=>x&&Number(x.qty)>0);updateCart();
+const oldUpdateCart=updateCart;updateCart=function(){oldUpdateCart();saveCart()}
+const oldPlaceOrder=placeOrder;placeOrder=function(e){oldPlaceOrder(e);if(!document.getElementById('checkoutModal').classList.contains('show')){localStorage.removeItem('cakehouse_public_cart')}}
+</script>
+
+</body></html>
